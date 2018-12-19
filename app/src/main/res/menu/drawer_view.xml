@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/grp1" android:checkableBehavior="single" >
+        <item
+            android:id="@+id/select_ingredients"
+            android:icon="@drawable/ic_select"
+            android:title="@string/select_ingredients"/>
+        <item
+            android:id="@+id/chosen_ingredients"
+            android:icon="@drawable/ic_star"
+            android:title="@string/chosen_ingredients"/>
+    </group>
+
+    <group android:id="@+id/grp2" android:checkableBehavior="single" >
+        <item
+            android:id="@+id/search_drink"
+            android:icon="@drawable/ic_search"
+            android:title="@string/search_meal"/>
+        <item
+            android:id="@+id/favourite_drinks"
+            android:icon="@drawable/heart_pressed"
+            android:title="@string/favourite_meals"/>
+    </group>
+
+    <group android:id="@+id/grp3" android:checkableBehavior="single" >
+        <item
+            android:id="@+id/help"
+            android:icon="@drawable/ic_help"
+            android:title="@string/help"/>
+        <item
+            android:id="@+id/about"
+            android:icon="@drawable/ic_info"
+            android:title="@string/about"/>
+    </group>
+</menu>

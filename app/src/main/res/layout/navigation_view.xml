@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.NavigationView
+    android:id="@+id/nav_view"
+    android:background="@color/light_background_color"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:fitsSystemWindows="false"
+    android:addStatesFromChildren="true"
+    app:itemIconTint="@drawable/nav_menu_text_colors"
+    app:itemTextColor="@drawable/nav_menu_text_colors"
+    app:menu="@menu/drawer_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"/>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/parent_layout"
+        android:background="@drawable/gradient_background"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/drinks_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="112dp"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"/>
+
+        <include layout="@layout/app_progress_bar"/>
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:title="@string/search_meal"
+            style="@style/CustomToolbar"/>
+
+        <android.support.v7.widget.SearchView
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/AppSearchView"
+            android:elevation="4dp"
+            android:layout_below="@id/toolbar"
+            android:background="@color/light_background_color"
+            android:imeOptions=
+                "actionSearch|flagNoExtractUi|flagNoFullscreen"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        style="@style/CustomDrawerNavigationView"
+        app:headerLayout="@layout/navigation_menu_header"/>
+
+</android.support.v4.widget.DrawerLayout>

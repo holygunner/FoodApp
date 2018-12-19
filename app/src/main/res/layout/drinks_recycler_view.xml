@@ -1,0 +1,9 @@
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/drinks_recycler_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="?attr/actionBarSize"
+    android:paddingBottom="48dp"
+    android:clipToPadding="false"
+    android:scrollbars="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"/>

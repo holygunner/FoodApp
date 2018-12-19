@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ingredient_color_fill">#af46ff40</color>
+    <color name="dark_blue">#3949ab</color>
+    <color name="light_background_color">#fafafa</color>
+    <color name="gradient_top">#e8f5e9</color>
+    <color name="gradient_bellow">#e8f5e9</color>
+    <color name="text_color">#424242</color>
+    <color name="toolbar_grey_transparent">#e31b5e20</color>
+    <color name="toolbar_grey">#1b5e20</color>
+</resources>

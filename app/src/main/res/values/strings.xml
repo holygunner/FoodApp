@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">Discover Meals</string>
+    <string name="app_name_test_version">Test Version Discover Meals</string>
+    <string name="lores_ipsum">&#160;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+        anim id est laborum.</string>
+
+    <string name="help_how_to_use">&#160;Select the ingredients which you like, tap the button
+        and get the meals that contain them. The meals with the max number of matches will be
+        on the top of the list, so you always will get the most relevant search result.</string>
+
+    <string name="how_to_manage_ingrs">On the app start screen scroll up or down,
+        choose category of your ingredient and scroll left or right to find it on the card.
+        Tap the ingredient you wish once to select it. Your choice will be stored to the
+        \«Chosen ingredients\» section.</string>
+
+    <string name="help_how_to_like">&#160;Just tap the heart on the right upper corner of the meal
+        recipe. From this moment it is saved to your \«Favourite meals\» section of the drawer menu.
+    </string>
+
+    <string name="help_how_to_search">&#160;No problem, just use \«Search meal\» section.
+        Start to enter the name and the required meal will appear at once.</string>
+
+    <string name="help_clear_ingrs">&#160;Open \«Chosen ingredients\» of the drawer menu,
+        tap the ingredients you wish to clear and press the remove button. Also you can clear
+        an each selected ingredient by tap it again on the start screen.</string>
+
+    <string name="serve">Serve:</string>
+    <string name="ingredient_image">Ingredient image</string>
+    <string name="meal_image">Meal image</string>
+    <string name="show_the_meals">Show the meals</string>
+    <string name="like_button">Like button</string>
+    <string name="failed_connection">Failed connection</string>
+    <string name="like_button_pressed_ok">Saved to your fav\'s</string>
+    <string name="like_button_pressed_cancel">Removed from your fav\'s</string>
+    <string name="no_chosen_ingredients">Choose at least one ingredient</string>
+    <string name="no_fav_meals">Like at least one meal</string>
+    <string name="chosen_ingredients_are_cleared">Chosen ingredients are cleared</string>
+    <string name="fav_meals_are_cleared">Fav meals are cleared</string>
+    <string name="cardView_background">CardView Background</string>
+    <string name="meal_recipe">Meal recipe</string>
+    <string name="is_meal_liked">Is meal liked</string>
+    <string name="search_meal">Search meal</string>
+    <string name="favourite_meals">Favourite meals</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+    <string name="chosen_ingredients">Chosen ingredients</string>
+    <string name="select_ingredients">Select ingredients</string>
+    <string name="select_ingredients_to_remove">Select ingredients to remove from this list</string>
+    <string name="choose_the_meal">Choose the meal</string>
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer close</string>
+    <string name="swipe_to_remove">Swipe left to remove</string>
+    <string name="remove">Remove</string>
+    <string name="age_disclaimer">Sorry but you have no right to use this app</string>
+    <string name="developed_by_chyzh">Developed by Andrew Chyzh 2018</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="are_you_of_legal">Are you of legal mealing age in you country?</string>
+    <string name="if_i_want_to_clear">If I want to clear all selected ingredients or some of them</string>
+    <string name="how_to_save_the_meal_i_ve_liked">How to save the meal I\'ve liked</string>
+    <string name="if_i_d_like_to_find_meal_by_it_s_name">If I\'d like to find meal by it\'s name</string>
+    <string name="disclaimer_to_asses_our_app">&#160;DISCLAIMER: To asses our app you must be of legal
+        mealing age in you country or older.</string>
+    <string name="all_data_provided_by">&#160;All information and image resources used by the app
+        is provided by the open source project \«TheCocktailDB\»:
+        <a href="https://www.thecocktaildb.com">https://www.thecocktaildb.com</a>
+    </string>
+    <string name="trademarks_policy">&#160;All mentioned trademarks belong to their respectful
+        owners.</string>
+    <string name="app_privacy_policy">&#160;\«Discover Meals\» privacy policy:
+        <a href="https://bit.ly/2Euz73N">https://bit.ly/2Euz73N</a>
+    </string>
+    <string name="more_apps">&#160;More apps:
+        <a href="https://play.google.com/store/apps/developer?id=Andrew+Chyzh">
+            https://play.google.com/store/apps/developer?id=Andrew+Chyzh</a>
+    </string>
+    <string name="icon_image_header">icon_image_header</string>
+    <string name="how_to_use_the_app">How to use the app</string>
+    <string name="how_to_manage_ingredients">How to manage ingredients</string>
+</resources>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parent_layout"
+    android:background="@drawable/gradient_background_v2"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="?attr/actionBarSize"
+        android:clipToPadding="false"
+        android:scrollbars="vertical">
+
+    <LinearLayout
+        style="@style/HelpCardTextContainer">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/CardViewStyle">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="@string/how_to_use_the_app"
+                    style="@style/HelpCardHeader"/>
+
+                <TextView
+                    android:text="@string/help_how_to_use"
+                    style="@style/HelpCardInstruction"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/CardViewStyle">
+
+            <LinearLayout
+                style="@style/HelpCardTextContainer">
+
+                <TextView
+                    android:text="@string/how_to_manage_ingredients"
+                    style="@style/HelpCardHeader"/>
+
+                <TextView
+                    android:text="@string/how_to_manage_ingrs"
+                    style="@style/HelpCardInstruction"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/CardViewStyle">
+
+            <LinearLayout
+                style="@style/HelpCardTextContainer">
+
+                <TextView
+                    android:text="@string/if_i_d_like_to_find_meal_by_it_s_name"
+                    style="@style/HelpCardHeader"/>
+
+                <TextView
+                    android:text="@string/help_how_to_search"
+                    style="@style/HelpCardInstruction"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/CardViewStyle">
+
+            <LinearLayout
+                style="@style/HelpCardTextContainer">
+
+                <TextView
+                    android:text="@string/how_to_save_the_meal_i_ve_liked"
+                    style="@style/HelpCardHeader"/>
+
+                <TextView
+                    android:text="@string/help_how_to_like"
+                    style="@style/HelpCardInstruction"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical"
+            style="@style/CardViewStyle">
+
+            <LinearLayout
+                style="@style/HelpCardTextContainer">
+
+                <TextView
+                    android:text="@string/if_i_want_to_clear"
+                    style="@style/HelpCardHeader"/>
+
+                <TextView
+                    android:text="@string/help_clear_ingrs"
+                    style="@style/HelpCardInstruction"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:title="@string/help"
+        style="@style/CustomToolbar"/>
+
+</RelativeLayout>
