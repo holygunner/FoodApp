@@ -10,14 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/parent_layout"
-        android:background="@drawable/gradient_background"
+        android:background="@color/background_color"
         android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/drinks_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="112dp"
+            android:layout_below="@id/search_bar"
             android:clipToPadding="false"
             android:scrollbars="vertical"/>
 
@@ -35,7 +35,7 @@
             android:theme="@style/AppSearchView"
             android:elevation="4dp"
             android:layout_below="@id/toolbar"
-            android:background="@color/light_background_color"
+            android:background="@color/material_grey50"
             android:imeOptions=
                 "actionSearch|flagNoExtractUi|flagNoFullscreen"/>
 

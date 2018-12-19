@@ -54,7 +54,6 @@ public class MealRecipeFragment extends Fragment implements View.OnClickListener
     private CardView mIngredientsListCardView;
     private TextView mMealNameTextView;
     private TextView mMealRecipeTextView;
-    private TextView mServeGlassTextView;
     private IngredientManager mIngredientManager;
     private Set<String> chosenIngredientNames;
     private Meal mMeal;
@@ -116,8 +115,6 @@ public class MealRecipeFragment extends Fragment implements View.OnClickListener
         mMealNameTextView = v.findViewById(R.id.drink_name_textView);
         mMealRecipeTextView = v.findViewById(R.id.recipe_textView);
         mMealRecipeTextView.setMovementMethod(ScrollingMovementMethod.getInstance());
-        mServeGlassTextView = v.findViewById(R.id.serve_glass_textView);
-        mServeGlassTextView = v.findViewById(R.id.serve_glass_textView);
         mRecyclerView = v.findViewById(R.id.drink_ingredients_recyclerGridView);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), calculateSpanCount()));
 

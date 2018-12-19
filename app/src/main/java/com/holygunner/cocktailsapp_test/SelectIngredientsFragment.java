@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.holygunner.cocktailsapp_test.new_models.IngredientManager;
 import com.holygunner.cocktailsapp_test.new_models.IngredientsCategory;
@@ -40,7 +42,7 @@ public class SelectIngredientsFragment extends Fragment implements View.OnClickL
             = "select_ingredients_saved_state";
     private Parcelable savedRecyclerViewState;
     private RecyclerView mRecyclerView;
-    private Button mMixButton;
+    private FloatingActionButton mMixButton;
     private ViewGroup mParentContainer;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;

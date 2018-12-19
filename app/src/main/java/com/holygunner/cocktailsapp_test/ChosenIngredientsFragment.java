@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -52,7 +53,7 @@ public class ChosenIngredientsFragment extends Fragment implements View.OnClickL
     private RecyclerView mRecyclerView;
     private IngredientsAdapter mIngredientsAdapter;
     private IngredientManager mIngredientManager;
-    private Button mRemoveButton;
+    private FloatingActionButton mRemoveButton;
     private DrawerLayout mDrawerLayout;
     private ViewGroup parentLayout;
     private NavigationView mNavigationView;

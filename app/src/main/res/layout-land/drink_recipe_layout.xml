@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:background="@drawable/gradient_background"
+                android:background="@color/background_color"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_drink_recipe"
-        android:background="@color/toolbar_grey"
+        android:background="@color/dark_green"
         app:title="Drink recipe"
         style="@style/CustomToolbar"/>
 
@@ -108,15 +108,6 @@
                             android:id="@+id/recipe_textView"
                             android:textAlignment="textStart"
                             android:textColor="@color/text_color"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-
-                        <TextView
-                            android:id="@+id/serve_glass_textView"
-                            android:layout_marginTop="8dp"
-                            android:textStyle="italic"
-                            android:textColor="@color/text_color"
-                            android:gravity="center_horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 

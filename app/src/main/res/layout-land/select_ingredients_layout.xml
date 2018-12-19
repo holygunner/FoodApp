@@ -11,7 +11,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/parent_layout"
-                    android:background="@drawable/gradient_background"
+                    android:background="@color/background_color"
                     android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
@@ -21,15 +21,17 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:paddingTop="?attr/actionBarSize"
-            android:paddingBottom="96dp"
+            android:paddingBottom="80dp"
             android:clipToPadding="false"
             android:scrollbars="vertical"
             tools:context=".SelectIngredientsActivity"/>
 
-            <Button
-                android:id="@+id/mix_button"
-                style="@style/AppButtonLand"
-                android:text="@string/show_the_meals"/>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/mix_button"
+            app:backgroundTint="@color/dark_green"
+            app:fabSize="normal"
+            app:srcCompat="@drawable/ic_search_floating_button"
+            style="@style/FloatingActionButtonStyle"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"

@@ -13,6 +13,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/card_color"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:paddingStart="8dp"
@@ -24,8 +25,8 @@
 
             <ImageView
                 android:id="@+id/drink_imageView"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
                 android:contentDescription="@string/meal_image"/>
 
             <LinearLayout
@@ -44,7 +45,7 @@
 
                 <TextView
                     android:id="@+id/drink_chosen_ingredients_textView"
-                    android:maxLines="3"
+                    android:maxLines="5"
                     android:layout_marginTop="8dp"
                     android:textColor="@color/text_color"
                     android:textStyle="italic"

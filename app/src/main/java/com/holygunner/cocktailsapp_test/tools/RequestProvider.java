@@ -44,7 +44,7 @@ public class RequestProvider {
         return downloadCuisines;
     }
 
-    public String downloadBarByDrinkName(String drinkName){
+    public String downloadJsonByMealName(String drinkName){
         if (isDrinkNameCorrect(drinkName)){
             String url = URLBuilder.getBarByDrinkNameUrl(drinkName);
             String response = downloadJsonByRequest(url);

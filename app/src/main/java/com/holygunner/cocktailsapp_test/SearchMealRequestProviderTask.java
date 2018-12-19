@@ -2,6 +2,7 @@ package com.holygunner.cocktailsapp_test;
 
 import android.support.v4.app.Fragment;
 
+import com.holygunner.cocktailsapp_test.new_models.Meal;
 import com.holygunner.cocktailsapp_test.tools.JsonParser;
 import com.holygunner.cocktailsapp_test.tools.RequestProvider;
 import com.holygunner.cocktailsapp_test.tools.RequestProviderAsyncTask;
@@ -25,12 +26,13 @@ public class SearchMealRequestProviderTask extends RequestProviderAsyncTask<Stri
 
     @Override
     protected String doInBackground(String... strings) {
-        return new RequestProvider().downloadBarByDrinkName(strings[0]);
+        return new RequestProvider().downloadJsonByMealName(strings[0]);
     }
 
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
+
 
         if (result != null) {
             mCallback.callbackReturn(result);

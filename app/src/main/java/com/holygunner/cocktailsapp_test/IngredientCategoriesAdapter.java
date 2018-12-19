@@ -61,24 +61,21 @@ public class IngredientCategoriesAdapter extends RecyclerView.Adapter<Ingredient
         SelectIngredientsAdapter selectIngredientsAdapter
                 = new SelectIngredientsAdapter(mFragment, singleCategoryIngredients,
                 mIngredientManager);
-        holder.mRecyclerView.setHasFixedSize(true);
+        holder.mRecyclerView.setHasFixedSize(false);
 
         int orientation = mFragment.getResources().getConfiguration().orientation;
 
-        LinearLayoutManager manager;
+        RecyclerView.LayoutManager manager;
 
         if (orientation == ORIENTATION_PORTRAIT) {
             manager = new GridLayoutManager(mFragment.getActivity(),
                     IngredientItemHelper
                             .calculateNumbOfColumns(Objects.requireNonNull(mFragment.getContext())),
                     GridLayoutManager.HORIZONTAL, false);
-            manager.setInitialPrefetchItemCount(3);
         }   else {
             manager = new LinearLayoutManager(mFragment.getActivity(),
                     LinearLayoutManager.HORIZONTAL, false);
-            //dfgdfgdfgdfgdfgdfgdfg
         }
-
 
         holder.mRecyclerView.setLayoutManager(manager);
         holder.mRecyclerView.setAdapter(selectIngredientsAdapter);

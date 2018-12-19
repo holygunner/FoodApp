@@ -16,7 +16,7 @@ public abstract class IngredientItemHelper {
                                              TextView ingredientNameTextView, boolean isFill){
         if (isFill){
             ingredientNameTextView.setTextColor(ContextCompat.getColor(context,
-                    R.color.light_background_color));
+                    R.color.material_grey50));
             ingredientNameTextView
                     .setBackground(ContextCompat
                             .getDrawable(context, R.drawable.ingredient_name_fill));

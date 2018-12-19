@@ -4,8 +4,8 @@
         <shape android:shape="rectangle">
             <gradient
                 android:angle="90"
-                android:startColor="@color/toolbar_grey_transparent"
-                android:endColor="@color/toolbar_grey" />
+                android:startColor="@color/dark_green_transparent"
+                android:endColor="@color/dark_green" />
         </shape>
     </item>
 </selector>

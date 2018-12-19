@@ -9,15 +9,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/parent_layout"
-                    android:background="@drawable/gradient_background"
+                    android:background="@color/background_color"
                     android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:layout_marginBottom="102dp"
-            android:layout_marginTop="?attr/actionBarSize">
+            android:layout_below="@id/toolbar">
 
         <android.support.v7.widget.CardView
             android:id="@+id/ingredients_list_cardView"
@@ -37,31 +36,24 @@
                 android:overScrollMode="ifContentScrolls"
                 android:scrollbars="vertical"
                 android:clipToPadding="false"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"/>
+                android:paddingTop="8dp"/>
 
         </android.support.v7.widget.CardView>
 
         </LinearLayout>
 
-        <Button
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/remove_button"
-            android:text="@string/remove"
             android:visibility="invisible"
-            style="@style/AppButtonPortrait"/>
-
-        <TextView
-            android:text="@string/select_ingredients_to_remove"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:textAlignment="center"
-            android:textColor="@color/text_color"
-            android:layout_marginBottom="16dp"/>
+            app:backgroundTint="@color/dark_blue"
+            app:fabSize="normal"
+            app:maxImageSize="32dp"
+            app:srcCompat="@drawable/ic_remove_circle_floating_button"
+            style="@style/FloatingActionButtonStyle"/>
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            android:background="@color/toolbar_grey"
+            android:background="@color/dark_green"
             app:title="Chosen ingredients"
             style="@style/CustomToolbar"/>
 

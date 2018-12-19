@@ -10,6 +10,7 @@
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/background_color"
                     android:id="@+id/parent_layout">
 
         <android.support.v7.widget.RecyclerView
@@ -19,15 +20,22 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_below="@id/toolbar"
-
+            android:paddingBottom="80dp"
             android:clipToPadding="false"
             android:scrollbars="vertical"
             tools:context=".SelectIngredientsActivity"/>
 
-            <Button
+            <!--<Button-->
+                <!--android:id="@+id/mix_button"-->
+                <!--android:text="@string/show_the_meals"-->
+                <!--style="@style/AppButtonPortrait"/>-->
+
+            <android.support.design.widget.FloatingActionButton
                 android:id="@+id/mix_button"
-                android:text="@string/show_the_meals"
-                style="@style/AppButtonPortrait"/>
+                app:backgroundTint="@color/dark_green"
+                app:fabSize="normal"
+                app:srcCompat="@drawable/ic_search_floating_button"
+                style="@style/FloatingActionButtonStyle"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"

@@ -17,9 +17,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.holygunner.cocktailsapp_test.new_models.Cuisine;
 import com.holygunner.cocktailsapp_test.new_models.Meal;
 import com.holygunner.cocktailsapp_test.tools.DrawerMenuManager;
 import com.holygunner.cocktailsapp_test.tools.JsonParser;
+import com.holygunner.cocktailsapp_test.tools.RequestProvider;
+import com.holygunner.cocktailsapp_test.tools.RequestProviderAsyncTask;
 import com.holygunner.cocktailsapp_test.tools.ToolbarHelper;
 
 import java.util.ArrayList;
@@ -35,7 +38,6 @@ public class SearchMealFragment extends Fragment implements SearchMealRequestPro
     private List<Meal> mMeals = new ArrayList<>();
     private ProgressBar mProgressBar;
     private SearchView mSearchView;
-    private SearchMealRequestProviderTask.Callback mCallback;
 
     @NonNull
     public static SearchMealFragment newInstance(){
@@ -97,31 +99,26 @@ public class SearchMealFragment extends Fragment implements SearchMealRequestPro
 
     @Override
     public void callbackReturn(String result) {
-        JsonParser jsonParser = new JsonParser();
-        mMeals = Arrays.asList(jsonParser.parseJsonToCuisine(result).meals);
-        setupAdapter();
+        if (result != null) {
+            JsonParser jsonParser = new JsonParser();
+            Meal[] meals = jsonParser.parseJsonToCuisine(result).meals;
+            if (meals != null) {
+                mMeals = Arrays.asList(meals);
+                setupAdapter();
+            }
+        }
     }
-
+//
 //    protected static class SearchMealRequestProviderTask
 //            extends RequestProviderAsyncTask<String,Integer, String> {
-//
-//        interface Callback{
-//            public void callbackReturn();
-//        }
 //
 //        SearchMealRequestProviderTask(Fragment instance) {
 //            super(instance);
 //        }
 //
-//        Callback mCallback;
-//
-//        void registerCallback(Callback callback){
-//            mCallback = callback;
-//        }
-//
 //        @Override
 //        protected String doInBackground(String... strings) {
-//            return new RequestProvider().downloadBarByMealName(strings[0]);
+//            return new RequestProvider().downloadJsonByMealName(strings[0]);
 //        }
 //
 //        @Override
@@ -133,8 +130,11 @@ public class SearchMealFragment extends Fragment implements SearchMealRequestPro
 //            if (fragment != null){
 //                if (result != null) {
 //                    JsonParser jsonParser = new JsonParser();
-//                    fragment.mMeals = Arrays.asList(jsonParser.parseJsonToCuisine(result).drinks);
-//                    fragment.setupAdapter();
+//                    Meal[] meals = jsonParser.parseJsonToCuisine(result).meals;
+//                    if (meals != null) {
+//                        fragment.mMeals = Arrays.asList(meals);
+//                        fragment.setupAdapter();
+//                    }
 //                }
 //            }
 //        }

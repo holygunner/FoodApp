@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/material_grey50"
         android:orientation="vertical">
 
         <TextView
@@ -21,7 +22,7 @@
             android:textAlignment="center"
             android:padding="8dp"
             android:text="category"
-            android:textColor="@color/light_background_color"
+            android:textColor="@color/material_grey50"
             android:textSize="24sp"
             android:textStyle="bold"/>
 
@@ -29,7 +30,13 @@
         android:id="@+id/ingredients_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:splitMotionEvents="false"/>
+        android:paddingEnd="@dimen/ingredient_item_size"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="horizontal"
+        android:splitMotionEvents="false"
+        tools:ignore="RtlSymmetry"/>
 
     </LinearLayout>
 
