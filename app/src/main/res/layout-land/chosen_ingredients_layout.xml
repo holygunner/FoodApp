@@ -44,7 +44,6 @@
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/remove_button"
-            android:visibility="invisible"
             app:backgroundTint="@color/dark_blue"
             app:fabSize="normal"
             app:maxImageSize="32dp"

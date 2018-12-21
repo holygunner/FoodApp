@@ -61,7 +61,7 @@ public class IngredientCategoriesAdapter extends RecyclerView.Adapter<Ingredient
         SelectIngredientsAdapter selectIngredientsAdapter
                 = new SelectIngredientsAdapter(mFragment, singleCategoryIngredients,
                 mIngredientManager);
-        holder.mRecyclerView.setHasFixedSize(false);
+        holder.mRecyclerView.setHasFixedSize(true);
 
         int orientation = mFragment.getResources().getConfiguration().orientation;
 
@@ -72,6 +72,9 @@ public class IngredientCategoriesAdapter extends RecyclerView.Adapter<Ingredient
                     IngredientItemHelper
                             .calculateNumbOfColumns(Objects.requireNonNull(mFragment.getContext())),
                     GridLayoutManager.HORIZONTAL, false);
+            if (holder.mRecyclerView.getOnFlingListener() == null) {
+                mSnapHelper.attachToRecyclerView(holder.mRecyclerView);
+            }
         }   else {
             manager = new LinearLayoutManager(mFragment.getActivity(),
                     LinearLayoutManager.HORIZONTAL, false);
@@ -79,10 +82,6 @@ public class IngredientCategoriesAdapter extends RecyclerView.Adapter<Ingredient
 
         holder.mRecyclerView.setLayoutManager(manager);
         holder.mRecyclerView.setAdapter(selectIngredientsAdapter);
-
-        if (holder.mRecyclerView.getOnFlingListener() == null) {
-            mSnapHelper.attachToRecyclerView(holder.mRecyclerView);
-        }
     }
 
     @Override

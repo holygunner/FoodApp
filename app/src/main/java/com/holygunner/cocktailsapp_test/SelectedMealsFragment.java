@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -35,7 +34,8 @@ import org.jetbrains.annotations.NotNull;
 import static com.holygunner.cocktailsapp_test.save.Saver.CHECKED_INGREDIENTS_KEY;
 import static com.holygunner.cocktailsapp_test.save.Saver.CHOSEN_INGREDIENTS_KEY;
 
-public class SelectedMealsFragment extends Fragment {
+public class SelectedMealsFragment extends Fragment
+        implements SelectedMealsRequestProviderTask.Callback {
     private static final String SELECTED_DRINKS_SAVED_STATE_KEY = "selected_drinks_saved_state_key";
     private Parcelable savedRecyclerViewState;
     private RecyclerView mRecyclerView;
@@ -117,38 +117,18 @@ public class SelectedMealsFragment extends Fragment {
                 Objects.requireNonNull(mRecyclerView.getLayoutManager()).onSaveInstanceState());
     }
 
-    protected static class MyRequestProviderTask
-            extends RequestProviderAsyncTask<String, Integer, List<Cuisine>> {
-
-        MyRequestProviderTask(Fragment instance) {
-            super(instance);
+    @Override
+    public void returnCallback(List<Cuisine> downloadCuisines) {
+        if (howMuchChecked == downloadCuisines.size()) {
+            Cuisine selectedCuisine = mCuisineManager.getSelectedCuisine(downloadCuisines);
+            mMeals = Arrays.asList(selectedCuisine.meals);
+            setupAdapter();
+        }   else {
+            Toast toast = ToastBuilder.getFailedConnectionToast(getContext());
+            toast.show();
+            Objects.requireNonNull(getActivity()).onBackPressed();
         }
-
-        @Override
-        protected List<Cuisine> doInBackground(String... ingredients) {
-            return new RequestProvider().downloadCuisines(ingredients);
-        }
-
-        @Override
-        protected void onPostExecute(List<Cuisine> downloadCuisines) {
-            super.onPostExecute(downloadCuisines);
-
-            SelectedMealsFragment fragment
-                    = (SelectedMealsFragment) super.getFragmentReference().get();
-
-            if (fragment != null) {
-                if (fragment.howMuchChecked == downloadCuisines.size()) {
-                    Cuisine selectedCuisine = fragment.mCuisineManager.getSelectedCuisine(downloadCuisines);
-                    fragment.mMeals = Arrays.asList(selectedCuisine.meals);
-                    fragment.setupAdapter();
-                }   else {
-                    Toast toast = ToastBuilder.getFailedConnectionToast(fragment.getContext());
-                    toast.show();
-                    Objects.requireNonNull(fragment.getActivity()).onBackPressed();
-                }
-                fragment.howMuchChecked = 0;
-            }
-        }
+        howMuchChecked = 0;
     }
 
     private void loadMeals(@NotNull ProgressBar progressCuisine){
@@ -160,7 +140,8 @@ public class SelectedMealsFragment extends Fragment {
 
         howMuchChecked = added.length;
 
-        MyRequestProviderTask task = new MyRequestProviderTask(this);
+        SelectedMealsRequestProviderTask task = new SelectedMealsRequestProviderTask(this);
+        task.registerCallback(this);
         task.setProgressBar(progressCuisine);
         task.execute(added);
     }

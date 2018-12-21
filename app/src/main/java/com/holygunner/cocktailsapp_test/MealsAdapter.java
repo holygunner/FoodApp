@@ -24,6 +24,7 @@ import static com.holygunner.cocktailsapp_test.values.BundleKeys.MEAL_ID_KEY;
 import static com.holygunner.cocktailsapp_test.values.BundleKeys.MEAL_JSON_KEY;
 
 public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsHolder> {
+    private static final int VISIBLE_INGREDIENTS_LIMIT = 10;
     private Context mContext;
     private List<Meal> mMeals;
     private JsonParser mJsonParser;
@@ -57,7 +58,7 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsHolder>
     protected class MealsHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private Meal mMeal;
         private TextView drinkNameTextView;
-        private TextView drinkChosenIngredientsTextView;
+        private TextView mealIngredientsTextView;
         private TextView drinkPositionTextView;
         private ImageView drinkImageView;
         private View mHeartImageViewContainer;
@@ -65,8 +66,8 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsHolder>
         MealsHolder(View itemView) {
             super(itemView);
             drinkNameTextView = itemView.findViewById(R.id.drink_name_TextView);
-            drinkChosenIngredientsTextView
-                    = itemView.findViewById(R.id.drink_chosen_ingredients_textView);
+            mealIngredientsTextView
+                    = itemView.findViewById(R.id.drink_ingredients_textView);
             drinkPositionTextView = itemView.findViewById(R.id.drink_position);
             drinkImageView = itemView.findViewById(R.id.drink_imageView);
             mHeartImageViewContainer = itemView.findViewById(R.id.is_drink_liked_container);
@@ -84,12 +85,12 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsHolder>
             mContext.startActivity(intent);
         }
 
-        void bindMeal(Meal drink){
-            mMeal = drink;
+        void bindMeal(Meal meal){
+            mMeal = meal;
             setIsFavourite(Saver.isMealFavourite(mContext, mMeal));
-            drinkImageView.setTag(ImageHelper.downloadImage(drink.getUrlImage(), drinkImageView));
-            drinkNameTextView.setText(drink.getName());
-            setMealChosenIngredientsTextView(drink);
+            drinkImageView.setTag(ImageHelper.downloadImage(meal.getUrlImage(), drinkImageView));
+            drinkNameTextView.setText(meal.getName());
+            setMealChosenIngredientsTextView(meal);
         }
 
         private void setIsFavourite(boolean isFav){
@@ -100,23 +101,33 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsHolder>
             }
         }
 
-        private void setMealChosenIngredientsTextView(@NotNull Meal drink){
+        private void setMealChosenIngredientsTextView(@NotNull Meal meal){
             StringBuilder text = new StringBuilder();
 
             List<Ingredient> ingredients;
 
-            if (drink.getChosenIngredients().size() > 0){
-                ingredients = drink.getChosenIngredients();
+            if (meal.getChosenIngredients().size() > 0){
+                ingredients = meal.getChosenIngredients();
             }   else {
-                ingredients = drink.getIngredientsList();
+                ingredients = meal.getIngredientsList();
             }
 
-            for (Ingredient ingr: ingredients){
-                text.append(ingr.getName()).append(", ");
-            }
+            boolean isLimit = false;
 
+            if (ingredients.size() > VISIBLE_INGREDIENTS_LIMIT){
+                ingredients = ingredients.subList(0, VISIBLE_INGREDIENTS_LIMIT - 1);
+                isLimit = true;
+            }
+            for (Ingredient ingredient: ingredients){
+                text.append(ingredient.getName()).append(", ");
+            }
             text.delete(text.length()-2, text.length()-1);
-            drinkChosenIngredientsTextView.setText(text);
+            if (isLimit){
+                text.deleteCharAt(text.length()-1);
+                text.append("...");
+            }
+
+            mealIngredientsTextView.setText(text);
         }
     }
 }

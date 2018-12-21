@@ -20,7 +20,7 @@
             android:splitMotionEvents="false"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:paddingTop="?attr/actionBarSize"
+            android:layout_below="@id/toolbar"
             android:paddingBottom="80dp"
             android:clipToPadding="false"
             android:scrollbars="vertical"
@@ -28,7 +28,7 @@
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/mix_button"
-            app:backgroundTint="@color/dark_green"
+            app:backgroundTint="@color/dark_blue"
             app:fabSize="normal"
             app:srcCompat="@drawable/ic_search_floating_button"
             style="@style/FloatingActionButtonStyle"/>

@@ -65,8 +65,7 @@ public class SelectIngredientsAdapter
             super(itemView);
             ingredientNameTextView = itemView.findViewById(R.id.ingredientTextView);
             ingredientImageView = itemView.findViewById(R.id.ingredientImageView);
-            ingredientNameTextView.setOnClickListener(this);
-            ingredientImageView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
         void bind(Ingredient ingredient){

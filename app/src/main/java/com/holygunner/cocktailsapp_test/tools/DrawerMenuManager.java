@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 
+import com.holygunner.cocktailsapp_test.AboutActivity;
 import com.holygunner.cocktailsapp_test.ChosenIngredientsActivity;
 import com.holygunner.cocktailsapp_test.FavouriteMealsActivity;
 import com.holygunner.cocktailsapp_test.HelpActivity;
@@ -69,10 +70,10 @@ public class DrawerMenuManager {
                                             HelpActivity.class);
                                     break;
                                 case R.id.about:
-//                                    intent = new Intent(context,
-//                                            AboutActivity.class);
                                     intent = new Intent(context,
-                                            TestCallbackPatternActivity.class);
+                                            AboutActivity.class);
+//                                    intent = new Intent(context,
+//                                            TestCallbackPatternActivity.class);
                                     break;
                             }
                             if (intent != null) {

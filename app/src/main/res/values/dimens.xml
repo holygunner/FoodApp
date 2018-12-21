@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="ingredient_item_size">96dp</dimen>
+    <dimen name="ingredient_item_size">128dp</dimen>
+    <dimen name="ingredient_item_size96">96dp</dimen>
     <dimen name="ic_clear_margin">16dp</dimen>
 </resources>

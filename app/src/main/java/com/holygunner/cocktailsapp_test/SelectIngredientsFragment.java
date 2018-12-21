@@ -12,6 +12,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
 import android.transition.Fade;
@@ -21,13 +22,12 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 
 import com.holygunner.cocktailsapp_test.new_models.IngredientManager;
 import com.holygunner.cocktailsapp_test.new_models.IngredientsCategory;
 import com.holygunner.cocktailsapp_test.save.Saver;
 import com.holygunner.cocktailsapp_test.tools.DrawerMenuManager;
+import com.holygunner.cocktailsapp_test.tools.FabVisibilityHelper;
 import com.holygunner.cocktailsapp_test.tools.ToolbarHelper;
 
 import java.util.ArrayList;
@@ -42,12 +42,13 @@ public class SelectIngredientsFragment extends Fragment implements View.OnClickL
             = "select_ingredients_saved_state";
     private Parcelable savedRecyclerViewState;
     private RecyclerView mRecyclerView;
-    private FloatingActionButton mMixButton;
+    private FloatingActionButton mMixFab;
     private ViewGroup mParentContainer;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
     private List<IngredientsCategory> mIngredientsCategories = new ArrayList<>();
     private IngredientManager mIngredientManager;
+    private SnapHelper mSnapHelper;
 
     @NonNull
     public static SelectIngredientsFragment newInstance(){
@@ -85,19 +86,24 @@ public class SelectIngredientsFragment extends Fragment implements View.OnClickL
                 ToolbarHelper.MENU_BUTTON);
 
         mParentContainer = v.findViewById(R.id.parent_layout);
-        mMixButton = v.findViewById(R.id.mix_button);
+        mMixFab = v.findViewById(R.id.mix_button);
         mDrawerLayout = v.findViewById(R.id.drawer_layout);
         mNavigationView = v.findViewById(R.id.nav_view);
         DrawerMenuManager drawerMenuManager = new DrawerMenuManager();
         drawerMenuManager.setNavigationMenu(getActivity(), mDrawerLayout, mNavigationView,
                 CURRENT_ITEM_ID);
 
-        mMixButton.setOnClickListener(this);
-        mMixButton.setVisibility(!Saver.readIngredients(getContext(),
-                CHOSEN_INGREDIENTS_KEY).isEmpty() ? View.VISIBLE : View.INVISIBLE);
+        mMixFab.setOnClickListener(this);
+
+        mSnapHelper = new LinearSnapHelper();
 
         mRecyclerView = v.findViewById(R.id.ingredients_recycler_view);
-        mRecyclerView.setHasFixedSize(false);
+        mRecyclerView.setHasFixedSize(true);
+
+//        if (mRecyclerView.getOnFlingListener() == null) {
+//            mSnapHelper.attachToRecyclerView(mRecyclerView);
+//        }
+
         LinearLayoutManager manager = new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(manager);
@@ -138,22 +144,28 @@ public class SelectIngredientsFragment extends Fragment implements View.OnClickL
     public void setMixButtonVisibility(){
         boolean isExist = Saver.readIngredients(getContext(),
                 CHOSEN_INGREDIENTS_KEY).isEmpty();
-        boolean visibility;
+//        boolean visibility;
 
-        if ((mMixButton.getVisibility() == View.INVISIBLE) && !isExist){
-            visibility = true;
-        }   else if
-                ((mMixButton.getVisibility() == View.VISIBLE) && isExist){
-            visibility = false;
-            TransitionSet set = new TransitionSet()
-                    .addTransition(new Fade())
-                    .setInterpolator(new FastOutLinearInInterpolator());
-            TransitionManager.beginDelayedTransition(mParentContainer, set);
-            }   else {
-            return;
-        }
+        FabVisibilityHelper.setFabVisibility(mMixFab, !isExist);
 
-        mMixButton.setVisibility(visibility ? View.VISIBLE : View.INVISIBLE);
+//        if ((mMixFab.getVisibility() == View.INVISIBLE) && !isExist){
+//            visibility = true;
+//        }   else if
+//                ((mMixFab.getVisibility() == View.VISIBLE) && isExist){
+//            visibility = false;
+//            TransitionSet set = new TransitionSet()
+//                    .addTransition(new Fade())
+//                    .setInterpolator(new FastOutLinearInInterpolator());
+//            TransitionManager.beginDelayedTransition(mParentContainer, set);
+//            }   else {
+//            return;
+//        }
+//
+//        if (visibility){
+//            mMixFab.show();
+//        }   else {
+//            mMixFab.hide();
+//        }
     }
 
     private void setupAdapter() {

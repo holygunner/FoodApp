@@ -17,20 +17,20 @@
         <TextView
             android:id="@+id/category_textView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/dark_blue"
+            android:layout_height="wrap_content"
+            android:background="@color/dark_green"
             android:textAlignment="center"
+            android:textStyle="bold"
             android:padding="8dp"
             android:text="category"
             android:textColor="@color/material_grey50"
             android:textSize="24sp"
-            android:textStyle="bold"/>
+            />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/ingredients_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingEnd="@dimen/ingredient_item_size"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:clipToPadding="false"

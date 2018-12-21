@@ -17,12 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.holygunner.cocktailsapp_test.new_models.Cuisine;
 import com.holygunner.cocktailsapp_test.new_models.Meal;
 import com.holygunner.cocktailsapp_test.tools.DrawerMenuManager;
 import com.holygunner.cocktailsapp_test.tools.JsonParser;
-import com.holygunner.cocktailsapp_test.tools.RequestProvider;
-import com.holygunner.cocktailsapp_test.tools.RequestProviderAsyncTask;
 import com.holygunner.cocktailsapp_test.tools.ToolbarHelper;
 
 import java.util.ArrayList;
@@ -38,6 +35,7 @@ public class SearchMealFragment extends Fragment implements SearchMealRequestPro
     private List<Meal> mMeals = new ArrayList<>();
     private ProgressBar mProgressBar;
     private SearchView mSearchView;
+    private JsonParser mJsonParser;
 
     @NonNull
     public static SearchMealFragment newInstance(){
@@ -49,6 +47,7 @@ public class SearchMealFragment extends Fragment implements SearchMealRequestPro
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         setRetainInstance(true);
+        mJsonParser = new JsonParser();
     }
 
     @Nullable
@@ -100,62 +99,28 @@ public class SearchMealFragment extends Fragment implements SearchMealRequestPro
     @Override
     public void callbackReturn(String result) {
         if (result != null) {
-            JsonParser jsonParser = new JsonParser();
-            Meal[] meals = jsonParser.parseJsonToCuisine(result).meals;
+            Meal[] meals = mJsonParser.parseJsonToCuisine(result).meals;
             if (meals != null) {
                 mMeals = Arrays.asList(meals);
                 setupAdapter();
             }
         }
     }
-//
-//    protected static class SearchMealRequestProviderTask
-//            extends RequestProviderAsyncTask<String,Integer, String> {
-//
-//        SearchMealRequestProviderTask(Fragment instance) {
-//            super(instance);
-//        }
-//
-//        @Override
-//        protected String doInBackground(String... strings) {
-//            return new RequestProvider().downloadJsonByMealName(strings[0]);
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String result) {
-//            super.onPostExecute(result);
-//
-//            SearchMealFragment fragment = (SearchMealFragment) super.getFragmentReference().get();
-//
-//            if (fragment != null){
-//                if (result != null) {
-//                    JsonParser jsonParser = new JsonParser();
-//                    Meal[] meals = jsonParser.parseJsonToCuisine(result).meals;
-//                    if (meals != null) {
-//                        fragment.mMeals = Arrays.asList(meals);
-//                        fragment.setupAdapter();
-//                    }
-//                }
-//            }
-//        }
-//    }
 
     private void setSearchView(){
-            mSearchView.setQueryHint("Enter drink name");
+            mSearchView.setQueryHint(getString(R.string.enter_meal_name));
             mSearchView.setClipToPadding(true);
             mSearchView.setIconifiedByDefault(false);
             mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
                 @Override
                 public boolean onQueryTextSubmit(String query) {
-                    Log.i("TAG", query);
                     searchMeal(query);
                     return true;
                 }
 
                 @Override
                 public boolean onQueryTextChange(String newText) {
-                    Log.d("TAG", "QueryTextChange: " + newText);
                     if (newText.toCharArray().length > 1) {
                         searchMeal(newText);
                     }
@@ -172,10 +137,6 @@ public class SearchMealFragment extends Fragment implements SearchMealRequestPro
     }
 
     private void searchMeal(String drinkName){
-//        SearchMealRequestProviderTask task = new SearchMealRequestProviderTask(this);
-//        task.setProgressBar(mProgressBar);
-//        task.execute(drinkName);
-
         SearchMealRequestProviderTask task = new SearchMealRequestProviderTask(this);
         task.registerCallback(this);
         task.setProgressBar(mProgressBar);

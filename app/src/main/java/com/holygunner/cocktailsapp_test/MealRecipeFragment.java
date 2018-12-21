@@ -23,11 +23,9 @@ import com.holygunner.cocktailsapp_test.new_models.Ingredient;
 import com.holygunner.cocktailsapp_test.new_models.IngredientManager;
 import com.holygunner.cocktailsapp_test.new_models.Meal;
 import com.holygunner.cocktailsapp_test.save.Saver;
-import com.holygunner.cocktailsapp_test.tools.RequestProviderAsyncTask;
 import com.holygunner.cocktailsapp_test.tools.ImageHelper;
 import com.holygunner.cocktailsapp_test.tools.IngredientItemHelper;
 import com.holygunner.cocktailsapp_test.tools.JsonParser;
-import com.holygunner.cocktailsapp_test.tools.RequestProvider;
 import com.holygunner.cocktailsapp_test.tools.ToastBuilder;
 import com.holygunner.cocktailsapp_test.tools.ToolbarHelper;
 import com.holygunner.cocktailsapp_test.tools.URLBuilder;
@@ -44,7 +42,8 @@ import static com.holygunner.cocktailsapp_test.save.Saver.CHOSEN_INGREDIENTS_KEY
 import static com.holygunner.cocktailsapp_test.values.BundleKeys.MEAL_ID_KEY;
 import static com.holygunner.cocktailsapp_test.values.BundleKeys.MEAL_JSON_KEY;
 
-public class MealRecipeFragment extends Fragment implements View.OnClickListener {
+public class MealRecipeFragment extends Fragment implements View.OnClickListener,
+        RecipeRequestProviderTask.Callback {
     private static final String SAVED_DRINK_KEY = "saved_drink_key";
     private static final String IS_FAV_KEY = "is_fav_key";
     private RecyclerView mRecyclerView;
@@ -173,37 +172,6 @@ public class MealRecipeFragment extends Fragment implements View.OnClickListener
         }
     }
 
-    protected static class RecipeProviderTask
-            extends RequestProviderAsyncTask<Integer, Integer, String> {
-
-        RecipeProviderTask(Fragment instance) {
-            super(instance);
-        }
-
-        @Override
-        protected String doInBackground(Integer... drinksId) {
-            return new RequestProvider().downloadBarJsonById(drinksId[0]);
-        }
-
-        @Override
-        protected void onPostExecute(String drinkJson){
-            super.onPostExecute(drinkJson);
-            MealRecipeFragment fragment = (MealRecipeFragment) super.getFragmentReference().get();
-
-            if (fragment != null) {
-                if (drinkJson != null) {
-                    if (fragment.isAdded()) {
-                        fragment.setupMealRecipe(drinkJson, null);
-                    }
-                }   else {
-                    Toast toast = ToastBuilder.getFailedConnectionToast(fragment.getContext());
-                    toast.show();
-                    Objects.requireNonNull(fragment.getActivity()).onBackPressed();
-                }
-            }
-        }
-    }
-
     private int calculateSpanCount(){
         int orientation = getResources().getConfiguration().orientation;
         int spanCount = 2;
@@ -221,7 +189,8 @@ public class MealRecipeFragment extends Fragment implements View.OnClickListener
         if (drinkJson != null){
             setupMealRecipe(drinkJson, null);
         }   else {
-            RecipeProviderTask task = new RecipeProviderTask(this);
+            RecipeRequestProviderTask task = new RecipeRequestProviderTask(this);
+            task.registerCallback(this);
             task.setProgressBar(progressBar);
             task.execute(drinkId);
         }
@@ -259,6 +228,19 @@ public class MealRecipeFragment extends Fragment implements View.OnClickListener
         }
     }
 
+    @Override
+    public void returnCallback(String drinkJson) {
+        if (drinkJson != null) {
+            if (isAdded()) {
+                setupMealRecipe(drinkJson, null);
+                }
+            }   else {
+                Toast toast = ToastBuilder.getFailedConnectionToast(getContext());
+                toast.show();
+                Objects.requireNonNull(getActivity()).onBackPressed();
+            }
+    }
+
     private class IngredientsAdapter extends RecyclerView.Adapter<IngredientsHolder>{
         List<Ingredient> mIngredients;
 
@@ -270,7 +252,8 @@ public class MealRecipeFragment extends Fragment implements View.OnClickListener
         @Override
         public IngredientsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
-            View view = inflater.inflate(R.layout.ingredient_item, parent, false);
+            View view = inflater.inflate(R.layout.ingredient_item_v2,
+                    parent, false);
             return new IngredientsHolder(view);
         }
 
@@ -286,11 +269,14 @@ public class MealRecipeFragment extends Fragment implements View.OnClickListener
     }
 
     private class IngredientsHolder extends RecyclerView.ViewHolder{
+        private ViewGroup ingredientContainer;
         private ImageView ingredientImageView;
         private TextView ingredientNameTextView;
 
         IngredientsHolder(View itemView) {
             super(itemView);
+//            ingredientContainer = itemView.findViewById(R.id.ingredient_item_container);
+
             ingredientImageView = itemView.findViewById(R.id.ingredientImageView);
             ingredientNameTextView = itemView.findViewById(R.id.ingredientTextView);
         }

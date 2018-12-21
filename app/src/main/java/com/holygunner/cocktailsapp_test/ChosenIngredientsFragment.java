@@ -10,19 +10,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.transition.Fade;
-import android.transition.TransitionManager;
-import android.transition.TransitionSet;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +26,7 @@ import com.holygunner.cocktailsapp_test.new_models.IngredientManager;
 import com.holygunner.cocktailsapp_test.new_models.IngredientsComparator;
 import com.holygunner.cocktailsapp_test.save.Saver;
 import com.holygunner.cocktailsapp_test.tools.DrawerMenuManager;
+import com.holygunner.cocktailsapp_test.tools.FabVisibilityHelper;
 import com.holygunner.cocktailsapp_test.tools.IngredientItemHelper;
 import com.holygunner.cocktailsapp_test.tools.ToastBuilder;
 import com.holygunner.cocktailsapp_test.tools.ToolbarHelper;
@@ -49,11 +45,12 @@ import java.util.Set;
 public class ChosenIngredientsFragment extends Fragment implements View.OnClickListener {
     private static final String CHOSEN_INGREDIENTS_SAVED_STATE_KEY = "chosen_ingrs_saved_state_key";
     private static final String FILLED_POSITIONS_SAVED_KEY = "filled_position_saved_key";
+    private static final int CLOSE_DELAY = 200;
     private final int CURRENT_ITEM_ID = R.id.chosen_ingredients;
     private RecyclerView mRecyclerView;
     private IngredientsAdapter mIngredientsAdapter;
     private IngredientManager mIngredientManager;
-    private FloatingActionButton mRemoveButton;
+    private FloatingActionButton mRemoveFab;
     private DrawerLayout mDrawerLayout;
     private ViewGroup parentLayout;
     private NavigationView mNavigationView;
@@ -87,7 +84,7 @@ public class ChosenIngredientsFragment extends Fragment implements View.OnClickL
             mFilledIngredients = new HashSet<>(Arrays.asList(Objects
                     .requireNonNull(savedInstanceState
                             .getStringArray(FILLED_POSITIONS_SAVED_KEY))));
-            setButtonVisibility((mFilledIngredients.size() > 0));
+            FabVisibilityHelper.setFabVisibility(mRemoveFab,mFilledIngredients.size() > 0);
         }
     }
 
@@ -109,8 +106,8 @@ public class ChosenIngredientsFragment extends Fragment implements View.OnClickL
                 ToolbarHelper.MENU_BUTTON);
 
         parentLayout = v.findViewById(R.id.parent_layout);
-        mRemoveButton = v.findViewById(R.id.remove_button);
-        mRemoveButton.setOnClickListener(this);
+        mRemoveFab = v.findViewById(R.id.remove_button);
+        mRemoveFab.setOnClickListener(this);
         mDrawerLayout = v.findViewById(R.id.drawer_layout);
         mNavigationView = v.findViewById(R.id.nav_view);
         DrawerMenuManager drawerMenuManager = new DrawerMenuManager();
@@ -174,6 +171,7 @@ public class ChosenIngredientsFragment extends Fragment implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+        mRemoveFab.hide();
         Iterator<Ingredient> iterator = mIngredientsAdapter.mIngredients.listIterator();
 
         while (iterator.hasNext()){
@@ -188,16 +186,22 @@ public class ChosenIngredientsFragment extends Fragment implements View.OnClickL
             }
         }
         mFilledIngredients.clear();
-        setButtonVisibility(false);
 
         if (mChosenIngredients.size() == 0){
-            startActivity(new Intent(getContext(), SelectIngredientsActivity.class));
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    ToastBuilder.chosenIngrsListEmptyToast(getContext()).show();
+                    startActivity(new Intent(getContext(), SelectIngredientsActivity.class));
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            ToastBuilder.chosenIngrsListEmptyToast(getContext()).show();
+                        }
+                    }, ToastBuilder.SHOW_TOAST_DELAY);
                 }
-            }, ToastBuilder.SHOW_TOAST_DELAY);
+            }, CLOSE_DELAY);
+//            startActivity(new Intent(getContext(), SelectIngredientsActivity.class));
+
         }
     }
 
@@ -212,7 +216,7 @@ public class ChosenIngredientsFragment extends Fragment implements View.OnClickL
         @Override
         public IngredientsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
-            View view = inflater.inflate(R.layout.ingredient_item, parent, false);
+            View view = inflater.inflate(R.layout.ingredient_item_v2, parent, false);
             return new IngredientsHolder(view);
         }
 
@@ -270,7 +274,7 @@ public class ChosenIngredientsFragment extends Fragment implements View.OnClickL
                 setHolderFill(true);
             }
 
-            setButtonVisibility((mFilledIngredients.size() > 0));
+            FabVisibilityHelper.setFabVisibility(mRemoveFab, mFilledIngredients.size() > 0);
         }
 
         private void setHolderFill(boolean isFill){
@@ -279,23 +283,5 @@ public class ChosenIngredientsFragment extends Fragment implements View.OnClickL
             IngredientItemHelper.setFillToNameTextView(getContext(),
                     ingredientNameTextView, isFill);
         }
-    }
-
-    public void setButtonVisibility(boolean isFillExists){
-        boolean visibility;
-
-        if ((mRemoveButton.getVisibility() == View.INVISIBLE) && isFillExists){
-            visibility = true;
-        }   else if
-                ((mRemoveButton.getVisibility() == View.VISIBLE) && !isFillExists){
-            visibility = false;
-            TransitionSet set = new TransitionSet()
-                    .addTransition(new Fade())
-                    .setInterpolator(new FastOutLinearInInterpolator());
-            TransitionManager.beginDelayedTransition(parentLayout, set);
-        }   else {
-            return;
-        }
-        mRemoveButton.setVisibility(visibility ? View.VISIBLE : View.INVISIBLE);
     }
 }

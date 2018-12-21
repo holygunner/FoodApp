@@ -63,8 +63,6 @@
     <string name="if_i_want_to_clear">If I want to clear all selected ingredients or some of them</string>
     <string name="how_to_save_the_meal_i_ve_liked">How to save the meal I\'ve liked</string>
     <string name="if_i_d_like_to_find_meal_by_it_s_name">If I\'d like to find meal by it\'s name</string>
-    <string name="disclaimer_to_asses_our_app">&#160;DISCLAIMER: To asses our app you must be of legal
-        mealing age in you country or older.</string>
     <string name="all_data_provided_by">&#160;All information and image resources used by the app
         is provided by the open source project \«TheCocktailDB\»:
         <a href="https://www.thecocktaildb.com">https://www.thecocktaildb.com</a>
@@ -81,4 +79,5 @@
     <string name="icon_image_header">icon_image_header</string>
     <string name="how_to_use_the_app">How to use the app</string>
     <string name="how_to_manage_ingredients">How to manage ingredients</string>
+    <string name="enter_meal_name">Enter meal name</string>
 </resources>

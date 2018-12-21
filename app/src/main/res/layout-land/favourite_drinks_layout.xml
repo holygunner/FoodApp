@@ -22,7 +22,7 @@
             android:paddingLeft="24dp"
             android:gravity="center_vertical"
             android:layout_centerHorizontal="true"
-            style="@style/FavDrinksBottomTextView"/>
+            style="@style/FavMealsBottomTextView"/>
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"

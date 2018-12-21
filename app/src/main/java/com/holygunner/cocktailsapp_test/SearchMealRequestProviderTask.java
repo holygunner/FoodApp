@@ -14,7 +14,7 @@ public class SearchMealRequestProviderTask extends RequestProviderAsyncTask<Stri
         super(instance);
     }
 
-    interface Callback{
+    interface Callback {
         void callbackReturn(String result);
     }
 
@@ -33,13 +33,8 @@ public class SearchMealRequestProviderTask extends RequestProviderAsyncTask<Stri
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
 
-
         if (result != null) {
             mCallback.callbackReturn(result);
-
-//                JsonParser jsonParser = new JsonParser();
-//                fragment.mDrinks = Arrays.asList(jsonParser.parseJsonToCuisine(result).drinks);
-//                fragment.setupAdapter();
         }
 
     }

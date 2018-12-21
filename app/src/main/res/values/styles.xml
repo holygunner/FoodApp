@@ -42,7 +42,7 @@
 
     </style>
 
-    <style name="FavDrinksBottomTextView">
+    <style name="FavMealsBottomTextView">
         <item name="android:background">@drawable/bottom_textview_background</item>
         <item name="android:textColor">@color/material_grey50</item>
         <item name="android:layout_height">48dp</item>
@@ -89,15 +89,6 @@
         <item name="cardCornerRadius">8dp</item>
     </style>
 
-    <style name="AgeVerificationButton">
-        <item name="android:layout_marginStart">32dp</item>
-        <item name="android:layout_marginEnd">32dp</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/material_grey50</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
     <style name="HelpCardHeader">
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_marginBottom">8dp</item>
@@ -142,6 +133,9 @@
         <item name="android:layout_marginBottom">16dp</item>
         <item name="android:layout_marginEnd">16dp</item>
         <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
     </style>
 
 </resources>

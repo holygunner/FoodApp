@@ -19,7 +19,7 @@
             android:text="@string/swipe_to_remove"
             android:layout_width="match_parent"
             android:gravity="center_vertical|center_horizontal"
-            style="@style/FavDrinksBottomTextView"/>
+            style="@style/FavMealsBottomTextView"/>
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"

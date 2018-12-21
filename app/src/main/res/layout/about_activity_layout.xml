@@ -33,15 +33,11 @@
 
                         <ImageView
                             android:layout_gravity="center"
-                            android:src="@drawable/icon_header"
+                            android:src="@drawable/icon0green"
                             android:layout_width="wrap_content"
                             android:layout_height="192dp"
                             android:layout_marginBottom="24dp"
                             android:contentDescription="@string/icon_image_header"/>
-
-                        <TextView
-                            android:text="@string/disclaimer_to_asses_our_app"
-                            style="@style/AboutTextView"/>
 
                         <TextView
                             android:text="@string/all_data_provided_by"
