@@ -10,7 +10,7 @@
 
     <ImageView
         android:id="@+id/ingredientImageView"
-        android:src="@drawable/icon0"
+        android:src="@drawable/icon_blue"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:layout_width="@dimen/ingredient_item_size96"

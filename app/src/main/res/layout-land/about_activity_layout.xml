@@ -23,7 +23,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:src="@drawable/icon0green"
+                    android:src="@drawable/icon_blue"
                     android:layout_margin="8dp"
                     android:layout_width="144dp"
                     android:layout_height="match_parent"

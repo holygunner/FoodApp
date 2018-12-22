@@ -1,12 +1,5 @@
 <resources>
     <string name="app_name">Discover Meals</string>
-    <string name="app_name_test_version">Test Version Discover Meals</string>
-    <string name="lores_ipsum">&#160;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum.</string>
 
     <string name="help_how_to_use">&#160;Select the ingredients which you like, tap the button
         and get the meals that contain them. The meals with the max number of matches will be
@@ -57,17 +50,14 @@
     <string name="remove">Remove</string>
     <string name="age_disclaimer">Sorry but you have no right to use this app</string>
     <string name="developed_by_chyzh">Developed by Andrew Chyzh 2018</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="are_you_of_legal">Are you of legal mealing age in you country?</string>
     <string name="if_i_want_to_clear">If I want to clear all selected ingredients or some of them</string>
     <string name="how_to_save_the_meal_i_ve_liked">How to save the meal I\'ve liked</string>
     <string name="if_i_d_like_to_find_meal_by_it_s_name">If I\'d like to find meal by it\'s name</string>
-    <string name="all_data_provided_by">&#160;All information and image resources used by the app
-        is provided by the open source project \«TheCocktailDB\»:
-        <a href="https://www.thecocktaildb.com">https://www.thecocktaildb.com</a>
+    <string name="all_data_provided_by">&#160;All the data used by the app
+        is fetched from the open source project \«TheMealDB\»:
+        <a href="https://www.themealdb.com">https://www.themealdb.com</a>
     </string>
-    <string name="trademarks_policy">&#160;All mentioned trademarks belong to their respectful
+    <string name="trademarks_policy">&#160;Any mentioned trademarks belong to their respectful
         owners.</string>
     <string name="app_privacy_policy">&#160;\«Discover Meals\» privacy policy:
         <a href="https://bit.ly/2Euz73N">https://bit.ly/2Euz73N</a>

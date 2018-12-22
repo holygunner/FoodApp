@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                                        android:id="@+id/drawer_layout"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/parent_layout"
+        android:background="@color/background_color"
+        android:orientation="vertical">
+
+        <include layout="@layout/meals_recycler_view"/>
+
+        <TextView
+            android:id="@+id/bottom_textView"
+            android:text="@string/swipe_to_remove"
+            android:layout_width="wrap_content"
+            android:paddingRight="24dp"
+            android:paddingLeft="24dp"
+            android:gravity="center_vertical"
+            android:layout_centerHorizontal="true"
+            style="@style/FavMealsBottomTextView"/>
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:title="@string/favourite_meals"
+            style="@style/CustomToolbar"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        style="@style/CustomDrawerNavigationView"/>
+
+</android.support.v4.widget.DrawerLayout>

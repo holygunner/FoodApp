@@ -7,7 +7,7 @@
               android:gravity="center_vertical|center_horizontal">
 
     <ImageView
-        android:src="@drawable/icon3"
+        android:src="@drawable/icon_blue"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="@string/icon_image_header"/>
