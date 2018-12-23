@@ -9,11 +9,9 @@ import java.lang.ref.WeakReference;
 
 public abstract class RequestProviderAsyncTask<Params, Integer, Result>
         extends AsyncTask<Params, Integer, Result> {
-    private WeakReference<Fragment> mFragmentReference;
     private WeakReference<ProgressBar> mProgressBarReference;
 
-    public RequestProviderAsyncTask(Fragment instance){
-        mFragmentReference = new WeakReference<>(instance);
+    public RequestProviderAsyncTask(){
     }
 
     @SafeVarargs
@@ -44,9 +42,5 @@ public abstract class RequestProviderAsyncTask<Params, Integer, Result>
         if (progressBar != null) {
             progressBar.setVisibility(View.GONE);
         }
-    }
-
-    protected WeakReference<Fragment> getFragmentReference() {
-        return mFragmentReference;
     }
 }

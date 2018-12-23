@@ -14,11 +14,11 @@
 
     <group android:id="@+id/grp2" android:checkableBehavior="single" >
         <item
-            android:id="@+id/search_drink"
+            android:id="@+id/search_meal"
             android:icon="@drawable/ic_search"
             android:title="@string/search_meal"/>
         <item
-            android:id="@+id/favourite_drinks"
+            android:id="@+id/favourite_meals"
             android:icon="@drawable/heart_pressed"
             android:title="@string/favourite_meals"/>
     </group>

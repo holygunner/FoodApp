@@ -29,9 +29,9 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsHolder>
     private List<Meal> mMeals;
     private JsonParser mJsonParser;
 
-    MealsAdapter(Context context, List<Meal> drinks){
+    MealsAdapter(Context context, List<Meal> meals){
         mContext = context;
-        mMeals = drinks;
+        mMeals = meals;
         mJsonParser = new JsonParser();
     }
 
@@ -45,8 +45,8 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsHolder>
 
     @Override
     public void onBindViewHolder(@NonNull MealsHolder holder, int position) {
-        String drinkPosition = position + 1 + "";
-        holder.drinkPositionTextView.setText(drinkPosition);
+        String mealPosition = position + 1 + "";
+        holder.mealPositionTextView.setText(mealPosition);
         holder.bindMeal(mMeals.get(position));
     }
 
@@ -57,20 +57,20 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsHolder>
 
     protected class MealsHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private Meal mMeal;
-        private TextView drinkNameTextView;
+        private TextView mealNameTextView;
         private TextView mealIngredientsTextView;
-        private TextView drinkPositionTextView;
-        private ImageView drinkImageView;
+        private TextView mealPositionTextView;
+        private ImageView mealImageView;
         private View mHeartImageViewContainer;
 
         MealsHolder(View itemView) {
             super(itemView);
-            drinkNameTextView = itemView.findViewById(R.id.drink_name_TextView);
+            mealNameTextView = itemView.findViewById(R.id.meal_name_TextView);
             mealIngredientsTextView
-                    = itemView.findViewById(R.id.drink_ingredients_textView);
-            drinkPositionTextView = itemView.findViewById(R.id.drink_position);
-            drinkImageView = itemView.findViewById(R.id.drink_imageView);
-            mHeartImageViewContainer = itemView.findViewById(R.id.is_drink_liked_container);
+                    = itemView.findViewById(R.id.meal_ingredients_textView);
+            mealPositionTextView = itemView.findViewById(R.id.meal_position);
+            mealImageView = itemView.findViewById(R.id.meal_imageView);
+            mHeartImageViewContainer = itemView.findViewById(R.id.is_meal_liked_container);
             itemView.setOnClickListener(this);
         }
 
@@ -88,8 +88,8 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsHolder>
         void bindMeal(Meal meal){
             mMeal = meal;
             setIsFavourite(Saver.isMealFavourite(mContext, mMeal));
-            drinkImageView.setTag(ImageHelper.downloadImage(meal.getUrlImage(), drinkImageView));
-            drinkNameTextView.setText(meal.getName());
+            mealImageView.setTag(ImageHelper.downloadImage(meal.getUrlImage(), mealImageView));
+            mealNameTextView.setText(meal.getName());
             setMealChosenIngredientsTextView(meal);
         }
 
@@ -112,20 +112,20 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsHolder>
                 ingredients = meal.getIngredientsList();
             }
 
-            boolean isLimit = false;
+//            boolean isLimit = false;
 
-            if (ingredients.size() > VISIBLE_INGREDIENTS_LIMIT){
-                ingredients = ingredients.subList(0, VISIBLE_INGREDIENTS_LIMIT - 1);
-                isLimit = true;
-            }
+//            if (ingredients.size() > VISIBLE_INGREDIENTS_LIMIT){
+//                ingredients = ingredients.subList(0, VISIBLE_INGREDIENTS_LIMIT - 1);
+//                isLimit = true;
+//            }
             for (Ingredient ingredient: ingredients){
                 text.append(ingredient.getName()).append(", ");
             }
             text.delete(text.length()-2, text.length()-1);
-            if (isLimit){
-                text.deleteCharAt(text.length()-1);
-                text.append("...");
-            }
+//            if (isLimit){
+//                text.deleteCharAt(text.length()-1);
+//                text.append("...");
+//            }
 
             mealIngredientsTextView.setText(text);
         }

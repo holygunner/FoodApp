@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class URLBuilder {
     private static final String SERVICE_URL_BASE = "https://www.themealdb.com/api/json/v1/";
-    private static final String PERSONAL_API_KEY = "1";
+    private static final String PERSONAL_API_KEY = "23543";
     private static final String GET_BY_INGR
             = "/filter.php?i=";
     private static final String GET_BY_DRINK_NAME

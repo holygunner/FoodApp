@@ -12,8 +12,7 @@ public class JsonParser {
     }
 
     public Cuisine parseJsonToCuisine(String json){
-        Cuisine cuisine = mGson.fromJson(json, Cuisine.class);
-        return cuisine;
+        return mGson.fromJson(json, Cuisine.class);
     }
 
     public String serializeMealToJsonBar(Meal meal){

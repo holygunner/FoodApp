@@ -106,7 +106,7 @@ public class ChosenIngredientsFragment extends Fragment implements View.OnClickL
                 ToolbarHelper.MENU_BUTTON);
 
         parentLayout = v.findViewById(R.id.parent_layout);
-        mRemoveFab = v.findViewById(R.id.remove_button);
+        mRemoveFab = v.findViewById(R.id.remove_fab);
         mRemoveFab.setOnClickListener(this);
         mDrawerLayout = v.findViewById(R.id.drawer_layout);
         mNavigationView = v.findViewById(R.id.nav_view);

@@ -37,7 +37,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class FavouriteMealsFragment extends Fragment {
-    private final int CURRENT_ITEM_ID = R.id.favourite_drinks;
+    private final int CURRENT_ITEM_ID = R.id.favourite_meals;
     private RecyclerView mRecyclerView;
     private MealsAdapter mMealsAdapter;
     private DrawerLayout mDrawerLayout;
@@ -72,7 +72,7 @@ public class FavouriteMealsFragment extends Fragment {
         new DrawerMenuManager().setNavigationMenu(getActivity(), mDrawerLayout, mNavigationView,
                 CURRENT_ITEM_ID);
 
-        mRecyclerView = v.findViewById(R.id.drinks_recycler_view);
+        mRecyclerView = v.findViewById(R.id.meals_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return v;
     }

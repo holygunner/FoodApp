@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class SearchMealFragment extends Fragment implements SearchMealRequestProviderTask.Callback {
-    private final int CURRENT_ITEM_ID = R.id.search_drink;
+    private final int CURRENT_ITEM_ID = R.id.search_meal;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
     private RecyclerView mRecyclerView;
@@ -70,7 +70,7 @@ public class SearchMealFragment extends Fragment implements SearchMealRequestPro
         new DrawerMenuManager().setNavigationMenu(getActivity(), mDrawerLayout, mNavigationView,
                 CURRENT_ITEM_ID);
 
-        mRecyclerView = v.findViewById(R.id.drinks_recycler_view);
+        mRecyclerView = v.findViewById(R.id.meals_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         setupAdapter();
         return v;
@@ -136,7 +136,7 @@ public class SearchMealFragment extends Fragment implements SearchMealRequestPro
     }
 
     private void searchMeal(String drinkName){
-        SearchMealRequestProviderTask task = new SearchMealRequestProviderTask(this);
+        SearchMealRequestProviderTask task = new SearchMealRequestProviderTask();
         task.registerCallback(this);
         task.setProgressBar(mProgressBar);
         task.execute(drinkName);

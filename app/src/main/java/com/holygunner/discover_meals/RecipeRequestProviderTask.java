@@ -8,10 +8,6 @@ import com.holygunner.discover_meals.tools.RequestProviderAsyncTask;
 public class RecipeRequestProviderTask extends RequestProviderAsyncTask<Integer, Integer, String> {
     private Callback mCallback;
 
-    RecipeRequestProviderTask(Fragment instance) {
-        super(instance);
-    }
-
     public interface Callback{
         void returnCallback(String drinkJson);
     }

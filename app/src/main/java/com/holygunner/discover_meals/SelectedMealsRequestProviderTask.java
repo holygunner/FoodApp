@@ -20,10 +20,6 @@ public class SelectedMealsRequestProviderTask
         mCallback = callback;
     }
 
-    SelectedMealsRequestProviderTask(Fragment instance) {
-        super(instance);
-    }
-
     @Override
     protected List<Cuisine> doInBackground(String... ingredients) {
         return new RequestProvider().downloadCuisines(ingredients);

@@ -1,5 +1,5 @@
 <android.support.v7.widget.RecyclerView
-    android:id="@+id/drinks_recycler_view"
+    android:id="@+id/meals_recycler_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="?attr/actionBarSize"

@@ -5,13 +5,13 @@ import android.support.design.widget.FloatingActionButton;
 
 public abstract class FabVisibilityHelper {
 
-    public static void setFabVisibility(@NonNull FloatingActionButton fab, boolean isFillExists){
+    public static void setFabVisibility(@NonNull FloatingActionButton fab, boolean isFilled){
         boolean visibility;
 
-        if ((!fab.isShown()) && isFillExists){
+        if ((!fab.isShown()) && isFilled){
             visibility = true;
         }   else if
-                ((fab.isShown()) && !isFillExists){
+                ((fab.isShown()) && !isFilled){
             visibility = false;
         }   else {
             return;

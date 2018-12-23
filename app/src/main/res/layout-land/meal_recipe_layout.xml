@@ -7,9 +7,9 @@
                 android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_drink_recipe"
+        android:id="@+id/toolbar"
         android:background="@color/dark_green"
-        app:title="Drink recipe"
+        app:title="@string/meal_recipe"
         style="@style/CustomToolbar"/>
 
     <include
@@ -17,7 +17,7 @@
 
     <LinearLayout
         android:id="@+id/like_button_container"
-        android:layout_below="@id/toolbar_drink_recipe"
+        android:layout_below="@id/toolbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="12dp"
@@ -34,14 +34,14 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/drink_title_container"
-        android:layout_below="@id/toolbar_drink_recipe"
+        android:id="@+id/meal_title_container"
+        android:layout_below="@id/toolbar"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/drink_name_textView"
+            android:id="@+id/meal_name_textView"
             android:gravity="center|top"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="40dp"
@@ -55,7 +55,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@id/drink_title_container"
+        android:layout_below="@id/meal_title_container"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
@@ -71,7 +71,7 @@
             android:layout_gravity="top">
 
             <ImageView
-                android:id="@+id/drink_imageView"
+                android:id="@+id/meal_imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
@@ -140,7 +140,7 @@
                 android:layout_height="match_parent">
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/drink_ingredients_recyclerGridView"
+                    android:id="@+id/meal_ingredients_recyclerGridView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:overScrollMode="ifContentScrolls"

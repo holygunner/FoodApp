@@ -6,9 +6,6 @@ import com.holygunner.discover_meals.tools.RequestProvider;
 import com.holygunner.discover_meals.tools.RequestProviderAsyncTask;
 
 public class SearchMealRequestProviderTask extends RequestProviderAsyncTask<String,Integer, String> {
-    public SearchMealRequestProviderTask(Fragment instance) {
-        super(instance);
-    }
 
     interface Callback {
         void callbackReturn(String result);

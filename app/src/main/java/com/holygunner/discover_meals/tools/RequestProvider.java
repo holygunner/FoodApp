@@ -79,7 +79,7 @@ public class RequestProvider {
     }
 
     @NonNull
-    public String downloadJsonByRequest(String url){
+    private String downloadJsonByRequest(String url){
         Request request = new Request.Builder()
                 .url(url)
                 .get()

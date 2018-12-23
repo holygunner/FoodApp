@@ -50,11 +50,11 @@ public class DrawerMenuManager {
                                         return false;
                                     }
                                     break;
-                                case R.id.search_drink:
+                                case R.id.search_meal:
                                     intent = new Intent(context,
                                             SearchMealActivity.class);
                                     break;
-                                case R.id.favourite_drinks:
+                                case R.id.favourite_meals:
                                     if (isFavMealsExist(context)) {
                                         intent = new Intent(context,
                                                 FavouriteMealsActivity.class);

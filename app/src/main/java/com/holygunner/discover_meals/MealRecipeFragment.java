@@ -44,7 +44,7 @@ import static com.holygunner.discover_meals.values.BundleKeys.MEAL_JSON_KEY;
 
 public class MealRecipeFragment extends Fragment implements View.OnClickListener,
         RecipeRequestProviderTask.Callback {
-    private static final String SAVED_DRINK_KEY = "saved_drink_key";
+    private static final String SAVED_DRINK_KEY = "saved_meal_key";
     private static final String IS_FAV_KEY = "is_fav_key";
     private RecyclerView mRecyclerView;
     private ImageView mMealImageView;
@@ -99,22 +99,22 @@ public class MealRecipeFragment extends Fragment implements View.OnClickListener
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.meal_recipe_layout, container, false);
-        android.support.v7.widget.Toolbar toolbar = v.findViewById(R.id.toolbar_drink_recipe);
+        android.support.v7.widget.Toolbar toolbar = v.findViewById(R.id.toolbar);
         ToolbarHelper.setToolbar(toolbar,
                 (SingleFragmentActivity) Objects.requireNonNull(getActivity()),
                 ToolbarHelper.UP_BUTTON);
 
-        mMealImageView = v.findViewById(R.id.drink_imageView);
+        mMealImageView = v.findViewById(R.id.meal_imageView);
         mLikeImageButton = v.findViewById(R.id.like_imageButton);
         mLikeImageButton.setOnClickListener(this);
         ViewGroup likeImageButtonContainer = v.findViewById(R.id.like_button_container);
         likeImageButtonContainer.setOnClickListener(this);
         mRecipeCardView = v.findViewById(R.id.recipe_cardView);
         mIngredientsListCardView = v.findViewById(R.id.ingredients_list_cardView);
-        mMealNameTextView = v.findViewById(R.id.drink_name_textView);
+        mMealNameTextView = v.findViewById(R.id.meal_name_textView);
         mMealRecipeTextView = v.findViewById(R.id.recipe_textView);
         mMealRecipeTextView.setMovementMethod(ScrollingMovementMethod.getInstance());
-        mRecyclerView = v.findViewById(R.id.drink_ingredients_recyclerGridView);
+        mRecyclerView = v.findViewById(R.id.meal_ingredients_recyclerGridView);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), calculateSpanCount()));
 
         final ProgressBar progressBar = v.findViewById(R.id.app_progress_bar);
@@ -122,9 +122,9 @@ public class MealRecipeFragment extends Fragment implements View.OnClickListener
         if (savedInstanceState != null){
             if (savedInstanceState.getCharArray(SAVED_DRINK_KEY) != null) {
                 mIsFav = savedInstanceState.getBoolean(IS_FAV_KEY);
-                String drinkJson = new String(Objects
+                String mealJson = new String(Objects
                         .requireNonNull(savedInstanceState.getCharArray(SAVED_DRINK_KEY)));
-                setupMealRecipe(drinkJson, mIsFav);
+                setupMealRecipe(mealJson, mIsFav);
             }
         }   else {
             loadMeal(progressBar);
@@ -143,8 +143,8 @@ public class MealRecipeFragment extends Fragment implements View.OnClickListener
         }
     }
 
-    private void setupMealRecipe(String drinkJson, Boolean isFav){
-        mMeal = mJsonParser.parseJsonToCuisine(drinkJson).meals[0];
+    private void setupMealRecipe(String mealJson, Boolean isFav){
+        mMeal = mJsonParser.parseJsonToCuisine(mealJson).meals[0];
         if (isFav != null){
             mIsFav = isFav;
         }   else {
@@ -183,16 +183,16 @@ public class MealRecipeFragment extends Fragment implements View.OnClickListener
     }
 
     private void loadMeal(@NotNull ProgressBar progressBar){
-        int drinkId = Objects.requireNonNull(getActivity())
+        int mealId = Objects.requireNonNull(getActivity())
                 .getIntent().getIntExtra(MEAL_ID_KEY, 0);
-        String drinkJson = tryToLoadExtraJson();
-        if (drinkJson != null){
-            setupMealRecipe(drinkJson, null);
+        String mealJson = tryToLoadExtraJson();
+        if (mealJson != null){
+            setupMealRecipe(mealJson, null);
         }   else {
-            RecipeRequestProviderTask task = new RecipeRequestProviderTask(this);
+            RecipeRequestProviderTask task = new RecipeRequestProviderTask();
             task.registerCallback(this);
             task.setProgressBar(progressBar);
-            task.execute(drinkId);
+            task.execute(mealId);
         }
     }
 
@@ -229,10 +229,10 @@ public class MealRecipeFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public void returnCallback(String drinkJson) {
-        if (drinkJson != null) {
+    public void returnCallback(String mealJson) {
+        if (mealJson != null) {
             if (isAdded()) {
-                setupMealRecipe(drinkJson, null);
+                setupMealRecipe(mealJson, null);
                 }
             }   else {
                 Toast toast = ToastBuilder.getFailedConnectionToast(getContext());

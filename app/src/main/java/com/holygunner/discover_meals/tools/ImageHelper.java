@@ -17,7 +17,7 @@ import com.squareup.picasso.Target;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class ImageHelper {
-    private static final float ROUND_FACTOR = 32;
+    private static final float RATIO = 32;
 
     public static Target downloadImage(final String url, final ImageView imageView){
         final Target target = new Target() {
@@ -53,7 +53,7 @@ public abstract class ImageHelper {
         paint.setAntiAlias(true);
         canvas.drawARGB(0, 0, 0, 0);
         paint.setColor(color);
-        canvas.drawRoundRect(rectF, ROUND_FACTOR, ROUND_FACTOR, paint);
+        canvas.drawRoundRect(rectF, RATIO, RATIO, paint);
         paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
         canvas.drawBitmap(bitmap, rect, rect, paint);
 

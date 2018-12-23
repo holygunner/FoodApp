@@ -43,7 +43,7 @@
         </LinearLayout>
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/remove_button"
+            android:id="@+id/remove_fab"
             app:backgroundTint="@color/dark_blue"
             app:fabSize="normal"
             app:maxImageSize="32dp"

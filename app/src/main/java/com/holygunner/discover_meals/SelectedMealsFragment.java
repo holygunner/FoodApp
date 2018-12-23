@@ -78,7 +78,7 @@ public class SelectedMealsFragment extends Fragment
         Objects.requireNonNull(((SingleFragmentActivity) getActivity()).getSupportActionBar())
                 .setTitle(R.string.choose_the_meal);
 
-        mRecyclerView = v.findViewById(R.id.drinks_recycler_view);
+        mRecyclerView = v.findViewById(R.id.meals_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         final ProgressBar progressCuisine = v.findViewById(R.id.app_progress_bar);
@@ -138,7 +138,7 @@ public class SelectedMealsFragment extends Fragment
 
         howMuchChecked = added.length;
 
-        SelectedMealsRequestProviderTask task = new SelectedMealsRequestProviderTask(this);
+        SelectedMealsRequestProviderTask task = new SelectedMealsRequestProviderTask();
         task.registerCallback(this);
         task.setProgressBar(progressCuisine);
         task.execute(added);
